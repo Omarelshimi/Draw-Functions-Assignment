@@ -5,18 +5,45 @@ let ctx = cnv.getContext("2d");
 cnv.width = 600;
 cnv.height = 700;
 
-// Draw the land
-fill("green");
-rect(0, 500, 600, 250, "fill");
+// Birds
+
+function drawBird(x, y, beakcolor, eyelegcolor, bodycolor) {
+
+    // Bird #1
+    //Body
+    fill(bodycolor);
+    ellipse(x + 45, y + 30, 20, 15, 0, "fill");
+    //Head
+    circle(x + 62, y + 30, 12, "fill")
+    //Beak
+    fill(beakcolor)
+    triangle(x + 65, y + 28, x + 83, y + 35, x + 65, y + 38, "fill")
+    // Eyes
+    fill(eyelegcolor)
+    circle(x + 65, y + 25, 2, "fill")
+    // Wings
+    fill(bodycolor)
+    triangle(x + 45, y + 25, x + 25, y, x + 65, y, "fill")
+    triangle(x + 45, y + 25, x + 25, y + 60, x + 65, y + 60, "fill")
+    // Legs
+    fill(eyelegcolor)
+    line(x + 27, y + 25, x, y + 25)
+    line(x + 27, y + 35, x, y + 35)
+    //Top Toes
+    line(x + 10, y + 25, x, y + 20)
+    line(x + 10, y + 25, x, y + 30)
+    // Bottom Toes
+    line(x + 10, y + 35, x, y + 30)
+    line(x + 10, y + 35, x, y + 40)
+}
+
+drawBird(125, 170, "brown", "black", "indigo");
+drawBird(70, 225, "yellow", "black", "lightblue");
+drawBird(250, 210, "lime", "green", "tan")
 
 // Draw Tree
 fill("brown")
 rect(470, 300, 35, 200, "fill")
-
-// Draw Roots for the Tree
-fill("brown")
-triangle(505, 420, 530, 500, 505, 500, "fill")
-triangle(470, 420, 530, 500, 445, 500, "fill")
 
 // Leaves
 fill("lightgreen")
@@ -25,15 +52,32 @@ circle(450, 300, 55, "fill")
 circle(490, 265, 55, "fill")
 
 // Apples and Stems and Leaves
-fill("red")
-circle(450, 368, 10, "fill")
-circle(540, 355, 12, "fill")
-fill("brown");
-rect(448, 350, 4, 8, "fill")
-rect(538, 335, 5, 8, "fill")
+
+function apples(x, y, apcolor, stcolor, lecolor, rotation) {
+    fill(apcolor)
+    circle(x + 10, y, 10, "fill")
+    fill(stcolor);
+    rect(x + 8, y - 18, 4, 8, "fill")
+    fill(lecolor);
+    ellipse(x + 14, y - 10, 7, 3.5, rotation, "fill")
+}
+
+apples(440, 368, "red", "brown", "green", 10)
+apples(530, 368, "lime", "brown", "green", .4)
+apples(410, 358, "yellow", "brown", "green", 9)
+apples(562, 350, "orange", "brown", "green", 6)
+
+
+// Draw the land
 fill("green");
-ellipse(455, 357, 7, 3.5, 2.6, "fill")
-ellipse(536, 343, 8, 4, .5, "fill")
+rect(0, 500, 600, 250, "fill");
+
+
+// Draw Roots for the Tree
+fill("brown")
+triangle(505, 420, 530, 500, 505, 500, "fill")
+triangle(470, 420, 530, 500, 445, 500, "fill")
+
 
 // Clouds
 
@@ -44,62 +88,6 @@ circle(158, 100, 35, "fill")
 circle(190, 85, 35, "fill")
 circle(215, 100, 35, "fill")
 
-// Birds
-
-//Body
-fill("lightblue")
-ellipse(100, 250, 15, 10, 0, "fill");
-//Head
-fill("lightblue")
-circle(115, 250, 9, "fill")
-//Beak
-fill("yellow")
-triangle(120, 248, 128, 255, 120, 258, "fill")
-// Eyes
-fill("black")
-circle(118, 246, 2, "fill")
-// Wings
-fill("lightblue")
-triangle(100, 250, 88, 225, 110, 225, "fill")
-triangle(100, 250, 88, 275, 110, 275, "fill")
-// Legs
-fill("brown")
-line(68, 250, 85, 250, "fill")
-line(75, 255, 87, 255, "fill")
-//Top Toes
-line(75, 250, 70, 246, "fill")
-line(75, 250, 70, 254, "fill")
-// Bottom Toes
-line(78, 255, 70, 254, "fill")
-line(80, 255, 70, 258, "fill")
-
-
-//Body
-fill("indigo")
-ellipse(170, 200, 20, 15, 0, "fill");
-//Head
-fill("indigo")
-circle(187, 200, 12, "fill")
-//Beak
-fill("brown")
-triangle(190, 198, 208, 205, 190, 208, "fill")
-// Eyes
-fill("black")
-circle(190, 195, 2, "fill")
-// Wings
-fill("indigo")
-triangle(170, 195, 150, 170, 190, 170, "fill")
-triangle(170, 195, 150, 230, 190, 230, "fill")
-// Legs
-fill("brown")
-line(152, 195, 125, 195, "fill")
-line(152, 205, 125, 205, "fill")
-//Top Toes
-line(135, 195, 125, 190, "fill")
-line(135, 195, 125, 200, "fill")
-// Bottom Toes
-line(135, 205, 125, 200, "fill")
-line(135, 205, 125, 210, "fill")
 
 //Chatbox
 fill("lightgrey")
@@ -124,9 +112,9 @@ rect(172, 420, 8, 80, "fill")
 // Lamp Post
 fill("grey");
 rect(230, 310, 15, 190, "fill")
-triangle(237.5, 330, 220, 290, 255, 290, "fill",)
+triangle(237.5, 330, 220, 290, 255, 290, "fill", )
 rect(185, 280, 75, 10, "fill")
-rect(190 ,290, 10, 20, "fill")
+rect(190, 290, 10, 20, "fill")
 fill("yellow")
 circle(195, 320, 10, "fill")
 circle(195, 320, 10, "stroke")
